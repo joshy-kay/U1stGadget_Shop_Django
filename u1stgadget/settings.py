@@ -25,14 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-your-secret-key-change-in-production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# For Render deployment we disable debug by default. To enable debug locally
-# set the environment variable `DJANGO_DEBUG=True` or change this line while
-# developing. DO NOT enable debug on a public site.
-DEBUG = False
+# For Render/Vercel deployment we disable debug by default
+# To enable debug locally, set environment variable `DJANGO_DEBUG=True`
+DEBUG = os.environ.get('DJANGO_DEBUG', 'false').lower() == 'true'
 
-# Allow Render (and other hosts) to reach the app. In production you should
-# restrict this to your actual domain(s). Using ['*'] is acceptable for a
-# temporary demo on Render but tighten this for long-term deployments.
+# Allow all hosts for serverless deployment
 ALLOWED_HOSTS = ['*']
 
 

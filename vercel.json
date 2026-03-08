@@ -6,24 +6,23 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "100mb"
+        "maxLambdaSize": "100mb",
+        "runtime": "python3.11"
       }
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index.py"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "u1stgadget.settings",
-    "DJANGO_DEBUG": "false"
-  },
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30,
-      "memory": 1024
-    }
-  }
+  ]
 }
