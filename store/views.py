@@ -6,6 +6,11 @@ from .models import Product, Category, ContactMessage, Order, ITSupportRequest
 from .forms import ITSupportRequestForm
 
 
+def test(request):
+    """Simple test view to check if Django is working"""
+    return render(request, 'store/test.html')
+
+
 def home(request):
     """Home page view with featured products and hero banner"""
     try:
