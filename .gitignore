@@ -22,6 +22,11 @@ venv/
 
 # SSH keys
 .ssh/
+
+# Vercel (switched to Render)
+vercel.json
+api/
+.vercelignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
