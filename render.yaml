@@ -8,7 +8,7 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: u1stgadget.settings
       - key: DJANGO_DEBUG
-        value: "false"
+        value: "true"
       - key: DJANGO_SECRET_KEY
         generateValue: true
       - key: PYTHONUNBUFFERED
