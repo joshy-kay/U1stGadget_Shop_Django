@@ -107,9 +107,10 @@ Once your code is on GitHub:
 3. **Click "New Project"**
 4. **Import your repository**: `YOUR_USERNAME/u1st-gadget-shop`
 5. **Configure**:
-   - **Framework Preset**: Other
+   - **Framework Preset**: Python
    - **Root Directory**: `./`
-   - **Build Settings**: Leave defaults (will use Dockerfile)
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Output Directory**: Leave empty
 6. **Add Environment Variables**:
    ```
    DJANGO_SETTINGS_MODULE = u1stgadget.settings
@@ -117,6 +118,8 @@ Once your code is on GitHub:
    DJANGO_SECRET_KEY = your-32-character-secret-key-here
    ```
 7. **Click "Deploy"**
+
+**Note**: Vercel will automatically detect your `vercel.json` and `api/index.py` files.
 
 ## 🔧 Generate SECRET_KEY
 

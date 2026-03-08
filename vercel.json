@@ -1,19 +1,29 @@
 {
   "version": 2,
+  "name": "u1st-gadget-shop",
   "builds": [
     {
-      "src": "Dockerfile",
-      "use": "@vercel/docker"
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "100mb"
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/api/index.py"
     }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "u1stgadget.settings",
     "DJANGO_DEBUG": "false"
+  },
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
   }
 }
