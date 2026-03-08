@@ -2,8 +2,8 @@ services:
   - type: web
     name: u1st-gadget-shop
     runtime: python
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
-    startCommand: gunicorn u1stgadget.wsgi:application --bind 0.0.0.0:$PORT
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: sh -c "python manage.py migrate --noinput && gunicorn u1stgadget.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: u1stgadget.settings
@@ -11,3 +11,5 @@ services:
         value: "false"
       - key: DJANGO_SECRET_KEY
         generateValue: true
+      - key: PYTHONUNBUFFERED
+        value: "1"
