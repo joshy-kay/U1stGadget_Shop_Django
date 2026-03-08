@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - {{ product.name }} - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'store:shop' %}">Shop</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'store:product_detail' product.slug %}">{{ product.name }}</a></li>
+            <li class="breadcrumb-item active">Checkout</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Product Summary -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Order Summary</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex mb-3">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="img-thumbnail me-3" alt="{{ product.name }}" style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <div class="bg-light d-flex align-items-center justify-content-center me-3" style="width: 80px; height: 80px;">
+                                <i class="bi bi-image text-muted"></i>
+                            </div>
+                        {% endif %}
+                        <div>
+                            <h6 class="mb-1">{{ product.name }}</h6>
+                            <p class="mb-0 text-muted small">{{ product.category.name }}</p>
+                            <p class="mb-0 fw-bold text-primary">${{ product.price }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Total:</span>
+                        <span class="fw-bold text-primary">${{ product.price }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Options -->
+        <div class="col-lg-8">
+            <h2 class="mb-4">Choose Purchase Option</h2>
+
+            <!-- Option Tabs -->
+            <ul class="nav nav-tabs mb-4" id="checkoutTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="store-tab" data-bs-toggle="tab" data-bs-target="#store" type="button" role="tab">
+                        <i class="bi bi-shop"></i> Store Purchase
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="delivery-tab" data-bs-toggle="tab" data-bs-target="#delivery" type="button" role="tab">
+                        <i class="bi bi-truck"></i> Delivery Order
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="checkoutTabContent">
+                <!-- Store Purchase Tab -->
+                <div class="tab-pane fade show active" id="store" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i> <strong>Store Purchase:</strong> Customer will visit store to inspect and pay for the product.
+                            </div>
+                            
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="order_type" value="store_pickup">
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="full_name" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="full_name" name="full_name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone_number" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any special requests or questions..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-circle"></i> Confirm Store Pickup Order
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Order Tab -->
+                <div class="tab-pane fade" id="delivery" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                <i class="bi bi-truck"></i> <strong>Delivery Order:</strong> We will deliver the product to your address. Delivery fees may apply.
+                            </div>
+                            
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="order_type" value="delivery">
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="full_name_delivery" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="full_name_delivery" name="full_name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone_number_delivery" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone_number_delivery" name="phone_number" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="optional@email.com">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Delivery Address *</label>
+                                    <textarea class="form-control" id="address" name="address" rows="3" required placeholder="Enter your complete delivery address..."></textarea>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="notes_delivery" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes_delivery" name="notes" rows="3" placeholder="Delivery instructions, preferred time, etc..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-circle"></i> Confirm Delivery Order
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="mt-4 p-3 bg-light rounded">
+                <h6><i class="bi bi-question-circle"></i> Need Help?</h6>
+                <p class="mb-2 small text-muted">Contact us if you have any questions about your order.</p>
+                <a href="https://wa.me/23200000000" target="_blank" class="btn btn-success btn-sm">
+                    <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

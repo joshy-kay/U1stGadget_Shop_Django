@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}IT Support Request Submitted - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <!-- Success Icon -->
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle display-1 text-success"></i>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <h2 class="mb-3">IT Support Request Submitted!</h2>
+                    <p class="lead text-muted mb-4">
+                        Thank you for contacting our IT support team. We have received your request and will contact you shortly to confirm the details.
+                    </p>
+                    
+                    <!-- Request Summary -->
+                    <div class="alert alert-info text-start">
+                        <h6><i class="bi bi-info-circle"></i> What Happens Next?</h6>
+                        <ol class="mb-0">
+                            <li>We'll review your request within 24 hours</li>
+                            <li>Our technician will call you to discuss the issue</li>
+                            <li>We'll schedule a convenient service time</li>
+                            <li>Professional technician will provide the service</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="row text-start mb-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body">
+                                    <h6 class="text-primary"><i class="bi bi-telephone"></i> Phone Support</h6>
+                                    <p class="mb-0"><strong>+232 000 000 00</strong></p>
+                                    <small class="text-muted">Available 9 AM - 6 PM</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body">
+                                    <h6 class="text-success"><i class="bi bi-whatsapp"></i> WhatsApp Support</h6>
+                                    <a href="https://wa.me/23200000000" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="bi bi-whatsapp"></i> Chat Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Info -->
+                    <div class="alert alert-warning">
+                        <h6><i class="bi bi-exclamation-triangle"></i> Emergency Support</h6>
+                        <p class="mb-2">For urgent IT issues that can't wait, call us immediately:</p>
+                        <a href="tel:+23200000000" class="btn btn-warning">
+                            <i class="bi bi-telephone"></i> Emergency Hotline
+                        </a>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'store:home' %}" class="btn btn-primary">
+                            <i class="bi bi-house"></i> Back to Home
+                        </a>
+                        <a href="{% url 'store:shop' %}" class="btn btn-outline-primary">
+                            <i class="bi bi-shop"></i> Browse Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

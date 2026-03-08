@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: u1st-gadget-shop
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn u1stgadget.wsgi --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: u1stgadget.settings
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: false

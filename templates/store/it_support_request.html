@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}IT Support Request - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'store:it_support' %}">IT Support</a></li>
+            <li class="breadcrumb-item active">Service Request</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Request Form -->
+        <div class="col-lg-8 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-tools"></i> IT Support Request Form</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="full_name" class="form-label">Full Name *</label>
+                                {{ form.full_name }}
+                                {% if form.full_name.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.full_name.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.email.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone_number" class="form-label">Phone Number *</label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.phone_number.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="device_type" class="form-label">Device Type *</label>
+                                {{ form.device_type }}
+                                <small class="form-text text-muted">e.g., Laptop, Phone, Desktop</small>
+                                {% if form.device_type.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.device_type.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="brand_model" class="form-label">Brand & Model *</label>
+                            {{ form.brand_model }}
+                            <small class="form-text text-muted">e.g., Dell XPS 15, iPhone 13</small>
+                            {% if form.brand_model.errors %}
+                                <div class="text-danger small">
+                                    {{ form.brand_model.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="service_needed" class="form-label">Service Needed *</label>
+                            {{ form.service_needed }}
+                            {% if form.service_needed.errors %}
+                                <div class="text-danger small">
+                                    {{ form.service_needed.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="priority" class="form-label">Priority Level *</label>
+                                {{ form.priority }}
+                                {% if form.priority.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.priority.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="preferred_date" class="form-label">Preferred Service Date *</label>
+                                {{ form.preferred_date }}
+                                {% if form.preferred_date.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.preferred_date.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="preferred_time" class="form-label">Preferred Service Time *</label>
+                            {{ form.preferred_time }}
+                            {% if form.preferred_time.errors %}
+                                <div class="text-danger small">
+                                    {{ form.preferred_time.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Service Address *</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                <div class="text-danger small">
+                                    {{ form.address.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="notes" class="form-label">Additional Notes</label>
+                            {{ form.notes }}
+                            <small class="form-text text-muted">Any special requirements or additional information</small>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send"></i> Submit Request
+                            </button>
+                            <a href="{% url 'store:it_support' %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left"></i> Back to Services
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Info -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0"><i class="bi bi-info-circle"></i> Service Information</h6>
+                </div>
+                <div class="card-body">
+                    <h6>Priority Levels</h6>
+                    <ul class="small mb-3">
+                        <li><strong>Low:</strong> Non-urgent issues</li>
+                        <li><strong>Medium:</strong> Standard service requests</li>
+                        <li><strong>High:</strong> Important business needs</li>
+                        <li><strong>Urgent:</strong> Emergency situations</li>
+                    </ul>
+                    
+                    <h6>What to Expect</h6>
+                    <ul class="small mb-3">
+                        <li>Response within 24 hours</li>
+                        <li>Free initial diagnosis</li>
+                        <li>Transparent pricing</li>
+                        <li>30-day service warranty</li>
+                    </ul>
+                    
+                    <div class="alert alert-info small">
+                        <h6><i class="bi bi-telephone"></i> Need Immediate Help?</h6>
+                        <p class="mb-2">Call us for urgent issues:</p>
+                        <a href="tel:+23200000000" class="btn btn-success btn-sm">
+                            <i class="bi bi-telephone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Contact -->
+            <div class="card bg-primary text-white mt-3">
+                <div class="card-body text-center">
+                    <h6 class="mb-3"><i class="bi bi-whatsapp"></i> WhatsApp Support</h6>
+                    <p class="small mb-3">Chat with us for quick assistance</p>
+                    <a href="https://wa.me/23200000000" target="_blank" class="btn btn-light btn-sm">
+                        <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

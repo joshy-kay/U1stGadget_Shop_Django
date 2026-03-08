@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Successful - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <!-- Success Icon -->
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle display-1 text-success"></i>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <h2 class="mb-3">Order Successfully Placed!</h2>
+                    <p class="lead text-muted mb-4">
+                        Thank you for your order. We have received your request and will contact you shortly to confirm the details.
+                    </p>
+                    
+                    <!-- Next Steps -->
+                    <div class="row text-start mb-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light mb-3">
+                                <div class="card-body">
+                                    <h6 class="text-primary"><i class="bi bi-phone"></i> What's Next?</h6>
+                                    <ul class="small text-muted">
+                                        <li>We'll call you to confirm your order</li>
+                                        <li>Discuss delivery or pickup arrangements</li>
+                                        <li>Confirm final pricing and payment options</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light mb-3">
+                                <div class="card-body">
+                                    <h6 class="text-primary"><i class="bi bi-clock"></i> Response Time</h6>
+                                    <p class="small text-muted mb-0">
+                                        We typically respond within 24 hours during business hours.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="alert alert-info">
+                        <h6><i class="bi bi-info-circle"></i> Need to Contact Us?</h6>
+                        <p class="mb-2">If you have any questions or need to modify your order:</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="https://wa.me/23200000000" target="_blank" class="btn btn-success btn-sm">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="{% url 'store:contact' %}" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-envelope"></i> Contact Form
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'store:home' %}" class="btn btn-primary">
+                            <i class="bi bi-house"></i> Back to Home
+                        </a>
+                        <a href="{% url 'store:shop' %}" class="btn btn-outline-primary">
+                            <i class="bi bi-shop"></i> Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

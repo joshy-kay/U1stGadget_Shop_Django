@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block title %}IT Support & Services - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <h1 class="display-5 fw-bold mb-4">IT Support & System Services</h1>
+            <p class="lead text-muted">
+                Professional IT support and repair services for all your devices. From virus removal to hardware upgrades, 
+                we've got you covered with fast, reliable service.
+            </p>
+        </div>
+        <div class="col-lg-4">
+            <div class="bg-primary text-white rounded p-4 text-center">
+                <i class="bi bi-tools display-1"></i>
+                <h4 class="mt-3">Expert IT Support</h4>
+                <p class="mb-0">Fast & Reliable Service</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Overview -->
+    <div class="row mb-5">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-hammer text-primary display-4 mb-3"></i>
+                    <h5>Device Repair</h5>
+                    <p class="text-muted">Professional repair services for laptops, phones, and desktop computers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-shield-check text-primary display-4 mb-3"></i>
+                    <h5>Virus Removal</h5>
+                    <p class="text-muted">Complete virus and malware removal with system protection setup.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-cpu text-primary display-4 mb-3"></i>
+                    <h5>Hardware Upgrades</h5>
+                    <p class="text-muted">RAM upgrades, SSD installation, and performance improvements.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-gear text-primary display-4 mb-3"></i>
+                    <h5>Software Installation</h5>
+                    <p class="text-muted">Operating systems, software setup, and configuration.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-harddrive text-primary display-4 mb-3"></i>
+                    <h5>Data Recovery</h5>
+                    <p class="text-muted">Recover lost files from damaged or corrupted drives.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body">
+                    <i class="bi bi-wifi text-primary display-4 mb-3"></i>
+                    <h5>Network Setup</h5>
+                    <p class="text-muted">Home and office network configuration and troubleshooting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Service CTA -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-gradient text-white">
+                <div class="card-body text-center py-4">
+                    <h3 class="mb-3">Need IT Support?</h3>
+                    <p class="lead mb-4">
+                        Fill out our service request form and we'll get back to you within 24 hours.
+                    </p>
+                    <a href="{% url 'store:it_support_request' %}" class="btn btn-light btn-lg">
+                        <i class="bi bi-plus-circle"></i> Request IT Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Why Choose Our IT Support?</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="bi bi-lightning-charge text-primary display-4 mb-3"></i>
+                    <h6>Fast Service</h6>
+                    <p class="text-muted small">Same-day service available for most issues.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="bi bi-award text-primary display-4 mb-3"></i>
+                    <h6>Expert Technicians</h6>
+                    <p class="text-muted small">Certified professionals with years of experience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="bi bi-cash text-primary display-4 mb-3"></i>
+                    <h6>Affordable Pricing</h6>
+                    <p class="text-muted small">Competitive rates with no hidden fees.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 border-0 bg-light">
+                <div class="card-body text-center">
+                    <i class="bi bi-shield-check text-primary display-4 mb-3"></i>
+                    <h6>Guaranteed Work</h6>
+                    <p class="text-muted small">30-day warranty on all services performed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Service Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="bi bi-telephone"></i> Phone Support</h6>
+                            <p class="text-muted">Call us for immediate assistance:<br>
+                            <strong>+232 000 000 00</strong></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="bi bi-whatsapp"></i> WhatsApp Support</h6>
+                            <p class="text-muted">Chat with us on WhatsApp:<br>
+                            <a href="https://wa.me/23200000000" target="_blank" class="btn btn-success btn-sm">
+                                <i class="bi bi-whatsapp"></i> Chat Now
+                            </a></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="bi bi-clock"></i> Service Hours</h6>
+                            <p class="text-muted mb-0">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p class="text-muted">Saturday: 10:00 AM - 4:00 PM</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6><i class="bi bi-geo-alt"></i> Service Area</h6>
+                            <p class="text-muted">We serve Freetown and surrounding areas.<br>
+                            On-site service available!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5 class="mb-3">Emergency IT Support?</h5>
+                    <p class="mb-4">For urgent issues, contact us immediately for priority service.</p>
+                    <a href="tel:+23200000000" class="btn btn-light">
+                        <i class="bi bi-telephone"></i> Call Now
+                    </a>
+                    <div class="mt-3">
+                        <small>Available 24/7 for emergencies</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

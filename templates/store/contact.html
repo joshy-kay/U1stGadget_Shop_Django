@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - U1st Gadget & Things{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-8 mb-4">
+            <h2 class="mb-4">Get in Touch</h2>
+            
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Your Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="col-lg-4">
+            <h2 class="mb-4">Contact Information</h2>
+            
+            <!-- Quick Contact -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-telephone"></i> Quick Contact</h5>
+                    <div class="mb-3">
+                        <h6>WhatsApp</h6>
+                        <a href="https://wa.me/23200000000" target="_blank" class="btn btn-success w-100">
+                            <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                        <small class="text-muted d-block mt-2">+232 000 000 00</small>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Phone</h6>
+                        <p class="mb-0">+232 000 000 00</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Email</h6>
+                        <p class="mb-0">info@u1stgadget.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-clock"></i> Business Hours</h5>
+                    <div class="mb-2">
+                        <strong>Monday - Friday:</strong><br>
+                        9:00 AM - 6:00 PM
+                    </div>
+                    <div class="mb-2">
+                        <strong>Saturday:</strong><br>
+                        10:00 AM - 4:00 PM
+                    </div>
+                    <div>
+                        <strong>Sunday:</strong><br>
+                        Closed
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-geo-alt"></i> Store Location</h5>
+                    <p class="mb-2">
+                        <strong>U1st Gadget & Things</strong><br>
+                        123 Main Street<br>
+                        Freetown, Sierra Leone
+                    </p>
+                    <p class="text-muted small">
+                        Visit our store to see products in person and get expert advice.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Why Contact Us -->
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-question-circle"></i> How Can We Help?</h5>
+                    <ul class="small mb-0">
+                        <li>Product inquiries and recommendations</li>
+                        <li>Order status and delivery information</li>
+                        <li>Technical support and troubleshooting</li>
+                        <li>Bulk orders and special requests</li>
+                        <li>Partnership and business opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-primary">Do you offer warranties?</h6>
+                    <p class="text-muted small mb-0">Yes, most of our products come with manufacturer warranties. Contact us for specific warranty information.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-primary">Do you deliver outside Freetown?</h6>
+                    <p class="text-muted small mb-0">Yes, we deliver across Sierra Leone. Delivery fees may vary based on location.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-primary">Can I test products before buying?</h6>
+                    <p class="text-muted small mb-0">Absolutely! Visit our store to test and inspect products before making a purchase.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-primary">Do you offer bulk discounts?</h6>
+                    <p class="text-muted small mb-0">Yes, we offer special pricing for bulk orders. Contact us for a quote.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
