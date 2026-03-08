@@ -8,9 +8,15 @@ from .forms import ITSupportRequestForm
 
 def home(request):
     """Home page view with featured products and hero banner"""
-    featured_products = Product.objects.filter(is_featured=True, stock_status='in_stock')[:6]
-    latest_products = Product.objects.filter(stock_status='in_stock').order_by('-date_added')[:8]
-    categories = Category.objects.all()[:4]
+    try:
+        featured_products = Product.objects.filter(is_featured=True, stock_status='in_stock')[:6]
+        latest_products = Product.objects.filter(stock_status='in_stock').order_by('-date_added')[:8]
+        categories = Category.objects.all()[:4]
+    except Exception as e:
+        # If database queries fail, return empty querysets
+        featured_products = Product.objects.none()
+        latest_products = Product.objects.none()
+        categories = Category.objects.none()
     
     context = {
         'featured_products': featured_products,
