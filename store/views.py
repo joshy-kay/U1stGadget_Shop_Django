@@ -8,7 +8,67 @@ from .forms import ITSupportRequestForm
 
 def test(request):
     """Simple test view to check if Django is working"""
-    return render(request, 'store/test.html')
+    from django.http import HttpResponse
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Django Test</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5 text-center">
+            <h1 class="text-success">✅ Django is Working!</h1>
+            <p class="lead">This confirms Django is running properly on Render.</p>
+            <div class="mt-4">
+                <a href="/" class="btn btn-primary">← Back to Home</a>
+                <a href="/admin/" class="btn btn-secondary">Admin Login</a>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    return HttpResponse(html)
+
+
+def minimal_home(request):
+    """Minimal home view that returns plain HTML"""
+    from django.http import HttpResponse
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>U1st Gadget Shop</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; }
+            .container { max-width: 800px; margin: 0 auto; }
+            .success { color: green; }
+            .btn { display: inline-block; padding: 10px 20px; margin: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="success">🎉 U1st Gadget & Things is LIVE!</h1>
+            <p><strong>Status:</strong> Successfully deployed on Render</p>
+            <p><strong>Database:</strong> PostgreSQL with automatic seeding</p>
+            <p><strong>Admin:</strong> admin / admin123</p>
+
+            <div>
+                <a href="/admin/" class="btn">Admin Login</a>
+                <a href="/admin_dashboard/login/" class="btn">Dashboard</a>
+                <a href="/test/" class="btn">Test Page</a>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 5px;">
+                <h3>🚀 Deployment Complete!</h3>
+                <p>Your Django e-commerce site is now live at:</p>
+                <p><strong>https://u1st-gadget-shop-django.onrender.com</strong></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    return HttpResponse(html)
 
 
 def home(request):

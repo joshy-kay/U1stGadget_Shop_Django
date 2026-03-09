@@ -1,49 +1,107 @@
-{% extends 'base.html' %}
-
-{% block title %}Home - U1st Gadget & Things{% endblock %}
-
-{% block content %}
-<div class="container mt-5">
-    <h1>Welcome to U1st Gadget & Things</h1>
-    <p>Your one-stop shop for electronics and gadgets!</p>
-
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Featured Products</h3>
-            {% if featured_products %}
-                {% for product in featured_products %}
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">${{ product.price }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p class="text-muted">No featured products available yet.</p>
-            {% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U1st Gadget & Things - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4">🎉 U1st Gadget & Things</h1>
+            <p class="lead">Your one-stop shop for electronics and gadgets!</p>
         </div>
 
-        <div class="col-md-6">
-            <h3>Categories</h3>
-            {% if categories %}
-                {% for category in categories %}
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ category.name }}</h5>
-                            <p class="card-text">{{ category.description|truncatewords:10 }}</p>
-                        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Featured Products</h3>
                     </div>
-                {% endfor %}
-            {% else %}
-                <p class="text-muted">No categories available yet.</p>
-            {% endif %}
+                    <div class="card-body">
+                        {% if featured_products %}
+                            {% for product in featured_products %}
+                                <div class="mb-3 p-3 border rounded">
+                                    <h5>{{ product.name }}</h5>
+                                    <p class="text-primary">${{ product.price }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">Sample products will be loaded automatically.</p>
+                            <div class="mb-3 p-3 border rounded">
+                                <h5>Galaxy S Ultra</h5>
+                                <p class="text-primary">$1299.99</p>
+                            </div>
+                            <div class="mb-3 p-3 border rounded">
+                                <h5>ProBook 14 Laptop</h5>
+                                <p class="text-primary">$899.99</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Shop Categories</h3>
+                    </div>
+                    <div class="card-body">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <div class="mb-3 p-3 border rounded">
+                                    <h5>{{ category.name }}</h5>
+                                    <p class="text-muted">{{ category.description|truncatewords:10 }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">Categories will be loaded automatically.</p>
+                            <div class="mb-3 p-3 border rounded">
+                                <h5>Phones</h5>
+                                <p class="text-muted">Smartphones and accessories</p>
+                            </div>
+                            <div class="mb-3 p-3 border rounded">
+                                <h5>Laptops</h5>
+                                <p class="text-muted">Notebooks and ultrabooks</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/admin/" class="btn btn-primary btn-lg w-100">
+                        🔐 Admin Login<br>
+                        <small>admin / admin123</small>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/admin_dashboard/login/" class="btn btn-secondary btn-lg w-100">
+                        📊 Dashboard Login<br>
+                        <small>Same credentials</small>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/test/" class="btn btn-success btn-lg w-100">
+                        ✅ Test Page<br>
+                        <small>Check Django status</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-5">
+            <h4>🚀 Deployment Status</h4>
+            <p><strong>✅ Live on Render:</strong> https://u1st-gadget-shop-django.onrender.com</p>
+            <p><strong>✅ Database:</strong> PostgreSQL with automatic seeding</p>
+            <p><strong>✅ Admin User:</strong> Created automatically (admin/admin123)</p>
         </div>
     </div>
 
-    <div class="mt-4">
-        <a href="/admin/" class="btn btn-primary">Admin Login</a>
-        <a href="/admin_dashboard/login/" class="btn btn-secondary">Dashboard Login</a>
-    </div>
-</div>
-{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
