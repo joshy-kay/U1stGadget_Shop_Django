@@ -19,17 +19,9 @@ def home(request):
         categories = Category.objects.all()[:4]
     except Exception as e:
         # If database queries fail, return empty querysets
-        featured_products = Product.objects.none()
-        latest_products = Product.objects.none()
-        categories = Category.objects.none()
-    
-    context = {
-        'featured_products': featured_products,
-        'latest_products': latest_products,
-        'categories': categories,
-    }
-    return render(request, 'store/home.html', context)
-
+        featured_products = []
+        latest_products = []
+        categories = []
 
 def shop(request):
     """Shop page showing all products with filtering and pagination"""

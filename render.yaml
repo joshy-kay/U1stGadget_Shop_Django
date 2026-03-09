@@ -3,7 +3,7 @@ services:
     name: u1st-gadget-shop
     runtime: python
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
-    startCommand: sh -c "python manage.py migrate --noinput && python manage.py seed_gadgets && gunicorn u1stgadget.wsgi:application --bind 0.0.0.0:$PORT"
+    startCommand: sh -c "python manage.py migrate --noinput && python manage.py setup_db && gunicorn u1stgadget.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: u1stgadget.settings
